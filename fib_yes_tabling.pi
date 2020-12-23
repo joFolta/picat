@@ -1,0 +1,35 @@
+% https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat#main-content:~:text=Enter.-,Tabling,Listing%202%20shows%20a%20naive%20recursive%20Fibonacci%20implementation%20in%20Picat.
+
+% "This naive implementation works, but it has an exponential running time. Computing the 37th Fibonacci number takes more than two seconds on my machine"
+% "Computing the 100th Fibonacci number would take this program forever!"
+
+% run it using the command picat fib_no_tabling.pi
+% input a number (probably below 37) and press Enter
+
+% WOW!!!!
+% WOW!!!!
+% WOW!!!!
+% WOW!!!!
+% WOW!!!!
+% WOW!!!!
+% you can add just one line (table) at the beginning of the program to see a dramatic improvement in running time.
+% Now you can get not only 37th Fibonacci number instantly, but even the 1,337th (and the answer will not suffer from overflow, because Picat supports arbitrary-length integers).
+% Effectively, with tabling, you can change the asymptotic running time from exponential to linear.
+
+table
+fib(0) = 1.
+fib(1) = 1.
+fib(N) = F => 
+  N > 1,
+  F = fib(N-1) + fib(N-2).
+
+main => 
+  N = read_int(),
+  println(fib(N)).
+
+% compare this with recursive fibonacci in JS, such as https://repl.it/@sschoo24/Fibonacci-Recursion
+% it gets slow around when N < 30
+
+% But, possible to optimize JS fib recursion with memoization?
+
+% Yes, see fib_memoized.js

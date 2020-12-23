@@ -1,0 +1,17 @@
+% https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat#main-content:~:text=Enter.-,Tabling,Listing%202%20shows%20a%20naive%20recursive%20Fibonacci%20implementation%20in%20Picat.
+
+% "This naive implementation works, but it has an exponential running time. Computing the 37th Fibonacci number takes more than two seconds on my machine"
+% "Computing the 100th Fibonacci number would take this program forever!"
+
+% run it using the command picat fib_no_tabling.pi
+% input a number (probably below 37) and press Enter
+
+fib(0) = 1.
+fib(1) = 1.
+fib(N) = F => 
+  N > 1,
+  F = fib(N-1) + fib(N-2).
+
+main => 
+  N = read_int(),
+  println(fib(N)).
