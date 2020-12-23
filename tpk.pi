@@ -1,0 +1,19 @@
+% https://www.linuxjournal.com/content/introduction-tabled-logic-programming-picat#main-content:~:text=Listing%201.%20TPK,11%20space%2Dseparated%20numbers%20and%20press%20Enter.
+
+% TPK is an algorithm proposed by D. Knuth and L. Pardo to show the basic syntax of a programming language beyond the "Hello, World!" program.
+
+% run it using the command picat tpk.pi
+% Input 11 space-separated numbers and press Enter.
+
+f(T) = sqrt(abs(T)) + 5 * T**3.
+main =>
+    N = 11,
+    As = to_array([read_real() : I in 1..N]),
+    foreach (I in N..-1..1)
+        Y = f(As[I]),
+        if Y > 400 then
+            printf("%w TOO LARGE\n", I)
+        else
+            printf("%w %w\n", I, Y)
+        end
+    end.
